@@ -14,7 +14,7 @@ headers = {
     "Upgrade-insecure-requests": "1"
 }
 
-response = session.get('htttps://twitter.com/', headers=headers, allow_redirects=True)
+response = session.get('https://twitter.com/', headers=headers, allow_redirects=True)
 soup = BeautifulSoup(response.text, "lxml")
 auth_token = soup.find(attrs={'name': 'authenticity_token'}).get('value')
 
