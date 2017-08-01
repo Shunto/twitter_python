@@ -15,7 +15,6 @@ class TwitterCreateAccount:
          socket.socket = socks.socksocket
          self.screenname = ""
          self.host_url = "https://twitter.com/"
-         self.mypage_url = self.host_url + self.username
          self.session_url = self.host_url + "sessions"
          self.new_account_url = self.host_url + "account/create"
          self.tweet_url = self.host_url + "i/tweet/create" 
@@ -40,8 +39,8 @@ class TwitterCreateAccount:
      def main(self):
          payload = {
              "authenticity_token": "",
-             "signup_ui_metrics": "",
-             "m_metrics": "",
+             "signup_ui_metrics": "%7B%22rf%22%3A%7B%22a772da599904e1f214aebae3b4df4491fbd2795bf2772b4ab4b051bca16db2ea%22%3A-96%2C%22e105b3c2f865ffbd694b5a6c49426276915f801a2210a32ab9a2bbce25fa64a8%22%3A-2%2C%22adf6fc7122825120a6db4b49193b4317fb09b4b45be2d9ba6f069c439c738baa%22%3A95%2C%22a1cc43395bc41fc375fad62b3460684c48d8bd84096b595667acea68516b8a6f%22%3A255%7D%2C%22s%22%3A%22vY7g7X9vOZuynhJzpLZBpOeabwlA8308dzOxXY-XWdr0r8Ju2nmdh41CE-mht2D93BBXCl2O5NVgZqfwD6suzr_fbrQ7y3ByNXU9W7sXOXvzHKJiaikwsyqEkMzY-bLcHIsYp2I_hDjUibi8eCB36lWgv8tAB27ZK4Ib5nkYzK5_CMERhW_ThPuton6Rcb8vHEKIOiewpm_girjWm2cRgiwjKj0wVe6P67wZ_cjLtWy1u7HciSSLpHiXMc8Qcy_dEPZN8c0aJSp712QEjgihVjxFj77fn7AVV7zyXHbUlyAMe6tJqaMOa2fB_5EZoc7wdK2rDcJ8VOBzmEwDQjQAuAAAAV2cY9lQ%22%7D",
+             "m_metrics": "zRG4GCMAuTkAzRHQGBgAwDkAxBHnGBgAyDkAxBHzGAwA0DkAxBH%2FGAwA2DkAxBELGQwA4DkAxBEXGQwA6TkAxBEXGQAA8DkAxBEXGQAA%2BDkAxBEiGQsAADoAxBEiGQAACToAxBEiGQAADzoAxBEuGQwAGjoAvBE6GQ4AIDoAvBE6GQAAKjoAvBFGGQwAMDoAvBFGGQAAOzoAtBFSGQ4AQDoArBFpGRgATDoApBGZGTAAUToA%3APA8SC9QS3QYAsA4dDgwAOxoAbw7hEwAAUSoAXg56FFARgzgA",
              "d_metrics": "",
              "user[name]": "",
              "user[email]": "",
@@ -67,18 +66,18 @@ class TwitterCreateAccount:
              "authenticity_token": "",
              "challenges_passed": "false",
              "handles_challenge": "1",
-             "user_id": ""
+             "user_id": "796359178117750785"
          }
 
          fav = {
              "authenticity_token": "",
-             "id": "",
+             "id": "892264734300360706",
              "tweet_stat_count": "0"
          }    
          
          retweet = {
              "authenticity_token": "",
-             "id": "",
+             "id": "892264734300360706",
              "tweet_stat_count": "0"
          }
 
@@ -100,8 +99,7 @@ class TwitterCreateAccount:
          except ConnectionError:
              print "[*] Can't connect to Twitter."
              sys.exit()
-                                                                                                                                   
-                                                                                              try:
+         try:
              try:
                  payload['authenticity_token'] = auth_token
                  payload['user[email]'] = self.mail()
@@ -162,7 +160,8 @@ class TwitterCreateAccount:
                      finally:
                          sys.exit()
              except ConnectionError:
-                 print "[+] Connection error: %s" % url                                               sys.exit()                                          
+                 print "[+] Connection error: %s" % url
+                 sys.exit()                                          
              finally:
                  return 
          else:
